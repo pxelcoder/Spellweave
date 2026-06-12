@@ -2,8 +2,19 @@ name: Spellweave
 description: $description
 version: '${version}'
 
-main: pixl.dev.spellweave.Spellweave
+main: pixl.dev.spellweave.Main.Main
 api-version: '1.21.11'
 load: POSTWORLD
 
 authors: [ PixlDev ]
+
+commands:
+  spellweave:
+    description: This is the general command for anything to do with Spellweave.
+    usage: /<command> <example|example>
+    aliases: [spell, weave, sw]
+    permissions:
+      spellweave.player:
+        default: true
+      spellweave.admin:
+        default: op

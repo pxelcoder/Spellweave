@@ -1,8 +1,8 @@
-package pixl.dev.spellweave;
+package pixl.dev.spellweave.Main;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class Spellweave extends JavaPlugin {
+public final class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
