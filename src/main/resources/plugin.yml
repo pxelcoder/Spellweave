@@ -1,0 +1,9 @@
+name: Spellweave
+description: $description
+version: '${version}'
+
+main: pixl.dev.spellweave.Spellweave
+api-version: '1.21.11'
+load: POSTWORLD
+
+authors: [ PixlDev ]
