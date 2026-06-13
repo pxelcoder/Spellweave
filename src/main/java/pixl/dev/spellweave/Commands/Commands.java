@@ -18,10 +18,19 @@ public class Commands implements CommandExecutor, TabCompleter {
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-        // EXAMPLE COMMAND
-        if (cmd.getName().equalsIgnoreCase("example")) {
-            if ((args.length == 0) && (sender instanceof Player)) {
-                gui.openSpellcastGUI((Player) sender);
+        // SPELLWEAVE COMMAND TREE
+        // -------
+        if (cmd.getName().equalsIgnoreCase("spellweave")) {
+            if (args.length == 0) { // for example, just /spellweave
+
+            }
+            if (args.length == 1) { // for subcommands
+                // EXAMPLE COMMAND
+                if (args[0].equalsIgnoreCase("example")) {
+                    if (sender instanceof Player) {
+                        gui.openSpellcastGUI((Player) sender);
+                    }
+                }
             }
         }
         return true;
