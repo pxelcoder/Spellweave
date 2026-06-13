@@ -4,20 +4,23 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.HashMap;
-
 public class SpellcastGUI {
+
+    private ItemStack clicked = new ItemStack(Material.RED_STAINED_GLASS_PANE);
+    private ItemStack notClicked = new ItemStack(Material.LIME_STAINED_GLASS_PANE);;
+
     public void openSpellcastGUI(Player p) {
         Inventory inv = Bukkit.createInventory(p, 9*5, "Spellcasting");
 
         // Filler item
         ItemStack filler = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
         ItemMeta fillerMeta = filler.getItemMeta();
-        fillerMeta.setDisplayName("");
+        fillerMeta.setDisplayName(" ");
         filler.setItemMeta(fillerMeta);
 
         // Exit button
@@ -35,13 +38,11 @@ public class SpellcastGUI {
         // Spellcast picture buttons (clicked / red glass and not clicked / green glass)
 
             // Clicked
-        ItemStack clicked = new ItemStack(Material.RED_STAINED_GLASS_PANE);
         ItemMeta clickedMeta = clicked.getItemMeta();
         clickedMeta.setDisplayName(" ");
         clicked.setItemMeta(clickedMeta);
 
             // Not clicked
-        ItemStack notClicked = new ItemStack(Material.LIME_STAINED_GLASS_PANE);
         ItemMeta notClickedMeta = notClicked.getItemMeta();
         notClickedMeta.setDisplayName(" ");
         notClicked.setItemMeta(notClickedMeta);
@@ -124,10 +125,31 @@ public class SpellcastGUI {
         return pattern;
     }
 
-    public void toggleSpellWeave(Player p){
-
+    public void toggleSpellweave(Player p, InventoryClickEvent e){ // For when the spellweave is clicked
+        if (isClickInSpellweave(p,e)){
+            int index = e.getRawSlot();
+            if (p.getOpenInventory().getItem(index).isSimilar(notClicked)) {
+                p.getOpenInventory().getTopInventory().setItem(index, clicked);
+            }
+            else if (p.getOpenInventory().getItem(index).isSimilar(clicked)) {
+                p.getOpenInventory().getTopInventory().setItem(index, notClicked);
+            }
+            else {
+                return;
+            }
+        }
+        else {
+            return;
+        }
     }
-    public boolean isClickInSpell(Player p, ItemStack item){
+    public boolean isClickInSpellweave(Player p, InventoryClickEvent e){ // for when checking to toggleSpellWeave in clicklistener
+        if ((e.getCurrentItem().isSimilar(notClicked))||(e.getCurrentItem().isSimilar(clicked))){
+            return true;
+        }
+        return false;
+    }
+    public String isSpellweave(Player p){ // Checks if the Spellweave matches preexisting spells
+        // Checks using SpellManager
 
     }
 }

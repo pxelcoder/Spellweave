@@ -3,6 +3,7 @@ package pixl.dev.spellweave.Main;
 import org.bukkit.plugin.java.JavaPlugin;
 import pixl.dev.spellweave.Commands.Commands;
 import pixl.dev.spellweave.GUIs.SpellcastGUI;
+import pixl.dev.spellweave.Listeners.ClickListener;
 
 public final class Main extends JavaPlugin {
 
@@ -14,6 +15,8 @@ public final class Main extends JavaPlugin {
             // Command set
         getCommand("spellweave").setExecutor(new Commands(gui));
         getCommand("spellweave").setTabCompleter(new Commands(gui));
+            // Listeners
+        getServer().getPluginManager().registerEvents(new ClickListener(gui),this);
     }
 
     @Override
