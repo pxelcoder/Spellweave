@@ -43,5 +43,19 @@ public class SpellcastGUI {
         ItemMeta notClickedMeta = notClicked.getItemMeta();
         notClickedMeta.setDisplayName(null);
         notClicked.setItemMeta(notClickedMeta);
+
+        // Arrangement of main GUI
+            // Filler GUI
+        inv.setItem(0, filler);
+        inv.setItem(1, filler);
+        inv.setItem(7, filler);
+        inv.setItem(8, filler);
+        inv.setItem(9, filler);
+        inv.setItem(10, filler);
+        inv.setItem(17, filler);
+        inv.setItem(18, filler);
+        inv.setItem(19, filler);
+        inv.setItem(25, filler);
+        inv.setItem(26, filler);
     }
 }
