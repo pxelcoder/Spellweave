@@ -12,7 +12,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class SpellcastGUI {
 
     private ItemStack clicked = new ItemStack(Material.RED_STAINED_GLASS_PANE);
-    private ItemStack notClicked = new ItemStack(Material.LIME_STAINED_GLASS_PANE);;
+    private ItemStack notClicked = new ItemStack(Material.LIME_STAINED_GLASS_PANE);
+    private ItemStack confirm = new ItemStack(Material.EMERALD);
+    private ItemStack exit = new ItemStack(Material.BARRIER);
 
     public void openSpellcastGUI(Player p) {
         Inventory inv = Bukkit.createInventory(p, 9*5, "Spellcasting");
@@ -24,13 +26,13 @@ public class SpellcastGUI {
         filler.setItemMeta(fillerMeta);
 
         // Exit button
-        ItemStack exit = new ItemStack(Material.BARRIER);
+        exit = new ItemStack(Material.BARRIER);
         ItemMeta exitMeta = exit.getItemMeta();
         exitMeta.setDisplayName(ChatColor.RED + "Exit");
         exit.setItemMeta(exitMeta);
 
         // Confirm button
-        ItemStack confirm = new ItemStack(Material.EMERALD);
+        confirm = new ItemStack(Material.EMERALD);
         ItemMeta confirmMeta = confirm.getItemMeta();
         confirmMeta.setDisplayName(ChatColor.GREEN + "Confirm Cast");
         confirm.setItemMeta(confirmMeta);
@@ -148,8 +150,20 @@ public class SpellcastGUI {
         }
         return false;
     }
+    public boolean isConfirmClicked(Player p, InventoryClickEvent e){
+        if ((e.getCurrentItem()).isSimilar(confirm)){
+            return true;
+        }
+        return false;
+    }
+    public boolean isExitClicked(Player p, InventoryClickEvent e){
+        if (e.getCurrentItem().isSimilar(exit)){
+            return true;
+        }
+        return false;
+    }
     public String isSpellweave(Player p){ // Checks if the Spellweave matches preexisting spells
         // Checks using SpellManager
-
+        return "";
     }
 }

@@ -31,6 +31,13 @@ public class ClickListener implements Listener {
                 if (gui.isClickInSpellweave(player,e)) { // toggles the spell to make it cool and epic
                     gui.toggleSpellweave(player,e);
                 }
+                if (gui.isExitClicked(player,e)) {
+                    player.closeInventory();
+                }
+                if (gui.isConfirmClicked(player,e)) {
+                    player.closeInventory();
+                    // CALL WHATEVER IS NEEDED SORTA CHECK TYPE SHI
+                }
             }
         }
     }
