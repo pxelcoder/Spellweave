@@ -42,11 +42,13 @@ public class SpellcastGUI {
             // Clicked
         ItemMeta clickedMeta = clicked.getItemMeta();
         clickedMeta.setDisplayName(" ");
+        clickedMeta.setHideTooltip(true);
         clicked.setItemMeta(clickedMeta);
 
             // Not clicked
         ItemMeta notClickedMeta = notClicked.getItemMeta();
         notClickedMeta.setDisplayName(" ");
+        notClickedMeta.setHideTooltip(true);
         notClicked.setItemMeta(notClickedMeta);
 
         // Arrangement of main GUI
